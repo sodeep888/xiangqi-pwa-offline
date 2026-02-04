@@ -257,7 +257,7 @@ console.log(fenCode); // 輸出 FEN 格式棋盤
 
 ## 📞 聯絡方式
 
-- 🐛 [問題回報表單](填入你的 Google 表單)
+- 🐛 [問題回報表單](https://docs.google.com/forms/d/1GYzy-riAftOFiZNwsibmmnYMHih0T4ccjt1Ritm-g2k/edit?sharingaction=ownershiptransfer&ts=68a85dac)
 - 📧 Email: [xianqitw@gmail.com]
 - 🌐 線上體驗: https://android-xiangqi-offline.netlify.app/
 
