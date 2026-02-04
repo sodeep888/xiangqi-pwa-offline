@@ -8,7 +8,7 @@
 
 **一個功能完整、開源的象棋學習與對弈平台**
 
-[🎮 立即體驗](https://android-xiangqi-offline.netlify.app/) | [📖 完整文檔](#功能介紹) | [🐛 問題回報](填入你的Google表單連結)
+[🎮 立即體驗](https://android-xiangqi-offline.netlify.app/) | [📖 完整文檔](#功能介紹) | [🐛 問題回報]([填入你的Google表單連結](https://docs.google.com/forms/d/1GYzy-riAftOFiZNwsibmmnYMHih0T4ccjt1Ritm-g2k/viewform?pli=1&sharingaction=ownershiptransfer&ts=68a85dac&pli=1&edit_requested=true))
 
 </div>
 
@@ -258,7 +258,7 @@ console.log(fenCode); // 輸出 FEN 格式棋盤
 ## 📞 聯絡方式
 
 - 🐛 [問題回報表單](填入你的 Google 表單)
-- 📧 Email: [你的信箱]
+- 📧 Email: [xianqitw@gmail.com]
 - 🌐 線上體驗: https://android-xiangqi-offline.netlify.app/
 
 ---
