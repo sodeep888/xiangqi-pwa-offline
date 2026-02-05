@@ -170,7 +170,7 @@ console.log(fenCode); // 輸出 FEN 格式棋盤
 
 ## 📋 技術棧
 
-- **前端框架**: [填入你使用的框架，如 React/Vue/原生 JS]
+- **前端框架**: 原生 HTML/CSS/JavaScript (Vanilla JS)
 - **AI 引擎**: Pikafish (WebAssembly)
 - **視覺識別**: ONNX Runtime (自訓練模型)
 - **PWA**: Service Worker + Workbox
