@@ -238,7 +238,8 @@ This project uses the board recognition system from "Xiangqi Arena"
 Author: dffge552
 Source: https://github.com/dffge552/xiangqi-pwa-offline
 ```
-
+## Other Projects
+- [Block Blast Training Platform](https://github.com/dffge552/block-blast) - Puzzle game with guaranteed solvable generation algorithms
 ---
 
 ## Acknowledgments
