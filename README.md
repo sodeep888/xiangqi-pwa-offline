@@ -1,10 +1,11 @@
-# ♟️ Xiangqi Arena - Chinese Chess Platform(棋弈江湖)
+# ♟️ Xiangqi Arena - Chinese Chess Platform (棋弈江湖)
 
 <div align="center">
 
 ![License](https://img.shields.io/badge/license-MIT-blue.svg)
 ![Platform](https://img.shields.io/badge/platform-Web%20%7C%20PWA-green.svg)
 ![AI](https://img.shields.io/badge/AI-Pikafish-orange.svg)
+[![Mentioned in Awesome Xiangqi](https://awesome.re/mentioned-badge.svg)](https://github.com/lucaferranti/awesome-xiangqi)
 
 **An open-source Chinese Chess (Xiangqi) learning and playing platform**
 
@@ -14,16 +15,16 @@
 
 ---
 
-## Overview
+## 🌟 Overview
 
 A comprehensive Xiangqi platform featuring AI gameplay, board recognition, and extensive puzzle libraries. Built with modern web technologies and fully functional offline.
 
 **Key Highlights:**
-- Local AI engine powered by Pikafish
-- Open-source board recognition system (physical boards + screenshots)
-- 7,300+ puzzles covering openings, endgames, and classical positions
-- Complete offline support via PWA
-- Intelligent rule enforcement (checkmate, stalemate, perpetual check/chase detection)
+- 🤖 Local AI engine powered by Pikafish
+- 📸 Open-source board recognition system (physical boards + screenshots)
+- 📚 7,300+ puzzles covering openings, endgames, and classical positions
+- 📱 Complete offline support via PWA
+- ⚖️ Intelligent rule enforcement (checkmate, stalemate, perpetual check/chase detection)
 
 ---
 
