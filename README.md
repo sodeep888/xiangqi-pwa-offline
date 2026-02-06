@@ -1,4 +1,4 @@
-# ♟️ 棋弈江湖 - 專業象棋對戰平台
+# ♟️ Xiangqi Arena - Chinese Chess Platform(棋弈江湖)
 
 <div align="center">
 
@@ -6,266 +6,262 @@
 ![Platform](https://img.shields.io/badge/platform-Web%20%7C%20PWA-green.svg)
 ![AI](https://img.shields.io/badge/AI-Pikafish-orange.svg)
 
-**一個功能完整、開源的象棋學習與對弈平台**
+**An open-source Chinese Chess (Xiangqi) learning and playing platform**
 
-[🎮 立即體驗](https://android-xiangqi-offline.netlify.app/) | [📖 完整文檔](#功能介紹) | [🐛 問題回報]([填入你的Google表單連結](https://docs.google.com/forms/d/1GYzy-riAftOFiZNwsibmmnYMHih0T4ccjt1Ritm-g2k/viewform?pli=1&sharingaction=ownershiptransfer&ts=68a85dac&pli=1&edit_requested=true))
+[🎮 Live Demo](https://android-xiangqi-offline.netlify.app/) | [📖 Documentation](#features) | [🐛 Report Issues](https://docs.google.com/forms/d/1GYzy-riAftOFiZNwsibmmnYMHih0T4ccjt1Ritm-g2k/viewform)
 
 </div>
 
 ---
 
-## ✨ 核心特色
+## Overview
 
-- 🤖 **本地 AI 引擎** - 基於 Pikafish 的強大 AI 對戰與分析
-- 📸 **全平台唯一開源棋盤識別** - 支援實體棋盤、線上截圖雙模式
-- ⚖️ **智能棋規判定** - 自動識別將殺、困斃、長將、長捉等複雜局面
-- 🧠 **專業覆盤分析** - 深度剖析每一步棋的優劣
-- 📚 **7300+ 題庫資源** - 涵蓋開局、殘局、江湖、古譜等
-- 💾 **完全離線可用** - PWA 技術，無網路也能暢玩
-- 🎨 **自訂化體驗** - 多種棋盤與棋子風格
+A comprehensive Xiangqi platform featuring AI gameplay, board recognition, and extensive puzzle libraries. Built with modern web technologies and fully functional offline.
 
----
-
-## 🚀 快速開始
-
-### 線上體驗
-直接訪問：https://android-xiangqi-offline.netlify.app/
-
-### 本地運行
-```bash
-# Clone 專案
-git clone https://github.com/dffge552/xiangqi-pwa-offline.git
-
-# 進入目錄
-cd xiangqi-pwa-offline
-
-# 安裝依賴（如果有的話，根據你的專案調整）
-npm install
-
-# 啟動開發伺服器
-npm start
-```
+**Key Highlights:**
+- Local AI engine powered by Pikafish
+- Open-source board recognition system (physical boards + screenshots)
+- 7,300+ puzzles covering openings, endgames, and classical positions
+- Complete offline support via PWA
+- Intelligent rule enforcement (checkmate, stalemate, perpetual check/chase detection)
 
 ---
 
-## 📸 象棋棋盤識別系統（開源亮點）
+## Features
 
-### 🌟 全平台唯一開源實現
+### Game Modes
+- ♟️ **Two-Player Mode** - Local or online play
+- 🤖 **AI Opponent** - Multiple difficulty levels (PC & Android)
+- ⏱️ **Chess Clock** - Tournament-style time controls
 
-本專案提供**完整開源**的象棋棋盤識別解決方案，包含訓練好的模型與完整程式碼，你可以：
+### Learning Tools
+- 🧠 **Game Review** - Deep AI analysis of completed games (PC only)
+- 📊 **Position Analysis** - Real-time move suggestions (PC & Android)
+- 📚 **Puzzle Library** - 7,300+ curated positions:
+  - Opening patterns (~200 puzzles)
+  - Classical endgames (366 puzzles)
+  - Complex tactical positions (183 puzzles)
+  - Fundamental checkmate patterns
+  - Historical game studies
 
-- ✅ 直接使用於你的專案（請標註原作者）
-- ✅ 重新訓練模型以提升準確度
-- ✅ 修改適配不同棋種或應用場景
-- ✅ 學習 AI 視覺識別的實作方式
+### Board Recognition System
 
-### 📦 模型檔案
+**Industry-first open-source implementation** for Xiangqi board recognition.
 
-| 模型 | 用途 | 檔案 |
-|------|------|------|
-| 線上棋盤偵測 | 定位棋子位置 | `online_xiangqi_piece_detector.onnx` |
-| 線上棋子分類 | 識別棋子類型 | `online_xiangqi_classifier.onnx` |
-| 實體棋盤識別 | 實體棋盤整合識別 | `Entity_chess_recognition_model.onnx` |
+#### Two Recognition Modes
 
-### 🔧 兩種識別模式
+**1. Physical Board Recognition**
+- Supports wooden, paper, and various physical boards
+- Automatic perspective correction (handles camera angles)
+- Intelligent coordinate mapping
+- Best results with light-colored pieces
 
-#### 1️⃣ 實體棋盤識別
-- 支援木質、紙質等各類實體棋盤
-- 自動透視校正（拍攝角度容錯）
-- 智能座標映射技術
-- ⚠️ 最佳支援淺色系棋子
+**2. Digital Screenshot Recognition**
+- Optimized for digital board interfaces
+- Dual-model architecture: Detection + Classification
+- Automatic side (red/black) identification
+- No perspective correction needed
 
-#### 2️⃣ 線上截圖識別  
-- 針對數位化棋盤優化
-- 雙模型架構：Detection + Classification
-- 自動識別紅黑陣營
-- 無需透視校正
+#### Model Files
 
-### 🎯 使用範例
+| Model | Purpose | File |
+|-------|---------|------|
+| Online Detection | Locate piece positions | `online_xiangqi_piece_detector.onnx` |
+| Online Classification | Identify piece types | `online_xiangqi_classifier.onnx` |
+| Physical Board | Unified physical board recognition | `Entity_chess_recognition_model.onnx` |
+
+#### Usage Example
 
 ```javascript
-// 範例：如何整合識別功能（偽代碼）
+// Example: Integrate recognition (pseudocode)
 const recognizer = new ChessRecognizer();
 
-// 上傳照片
+// Upload image
 recognizer.uploadImage(imageFile);
 
-// 標註四角與中兵（用於定位校正）
+// Mark four corners and center pawn (for calibration)
 recognizer.markCorners([topLeft, topRight, bottomRight, bottomLeft]);
 recognizer.markCenterPawn(centerPosition);
 
-// 執行識別
+// Execute recognition
 const fenCode = await recognizer.recognize();
-console.log(fenCode); // 輸出 FEN 格式棋盤
+console.log(fenCode); // Outputs FEN notation
 ```
 
-> 💡 詳細 API 使用說明請參考專案原始碼
+> 💡 See source code for detailed API documentation
+
+### Intelligent Rule System
+
+Automatic detection of:
+- ✅ Checkmate and stalemate
+- ✅ Draw by insufficient material
+- ✅ Draw by repetition
+- ✅ Perpetual check/chase detection
+- 📜 Based on ROC Xiangqi Rules (2024 revision)
+
+Most positions are correctly adjudicated automatically. In edge cases, players should apply official rules manually.
+
+### Utilities
+- 🔄 **Undo Move** - Take back moves
+- 💾 **Save/Load Positions** - Store and retrieve games
+- ⚙️ **Position Editor** - Create custom legal positions
+- 🎨 **Customization** - 5 board themes + 5 piece styles
 
 ---
 
-## 🎮 功能介紹
+## Platform Support
 
-### 對戰模式
-- ♟️ **雙人對戰** - 本地或線上對弈
-- 🤖 **AI 對戰** - 多難度等級挑戰（PC & Android）
-- ⏱️ **棋鐘功能** - 仿真正式比賽計時
+| Feature | PC (Win/Mac/Linux) | Android | iOS |
+|---------|-------------------|---------|-----|
+| Two-Player | ✅ | ✅ | ✅ |
+| Chess Clock | ✅ | ✅ | ✅ |
+| AI Opponent | ✅ | ✅ | ❌* |
+| AI Analysis | ✅ | ✅ | ❌* |
+| Game Review | ✅ | ❌** | ❌* |
+| Board Recognition | ✅ | ✅ | ✅ |
 
-### 學習工具
-- 🧠 **覆盤分析** - AI 深度分析每一步（僅 PC）
-- 📊 **AI 分析** - 即時最佳走法建議（PC & Android）
-- 📚 **開局殘局庫** - 7300+ 精選題庫
-  - 象棋定式（~200 題）
-  - 江湖殘局（366 題）
-  - 疑難雜症（183 題）
-  - 基本殺法、古局練習等
-
-### 輔助功能
-- 🔄 **悔棋** - 一鍵退回上一步
-- 💾 **儲存/載入局面** - 保存精彩對局
-- ⚙️ **自訂棋盤** - 創建任意合法局面
-- 🎨 **個性化設定** - 5 種棋盤 + 5 種棋子風格
-
-### 智能判定
-- ✅ 自動識別將殺、困斃
-- ✅ 無過河子判和
-- ✅ 循環局面自動判和
-- ✅ 長捉/長將智能判定
-- 📜 採用《中華民國象棋規則-113年修訂版》
-- 🎯 大部分局面都能準確自動判定
-
-> ⚠️ 注意：遇無法自動判定或判定錯誤的情況，請棋手依照官方規則自行裁定勝負
+\* iOS: WebAssembly local computation limitations  
+** Mobile: Insufficient CPU for deep analysis
 
 ---
 
-## 🍎 平台支援
+## Quick Start
 
-| 功能 | Windows/Mac/Linux | Android | iOS |
-|------|-------------------|---------|-----|
-| 雙人對戰 | ✅ | ✅ | ✅ |
-| 棋鐘功能 | ✅ | ✅ | ✅ |
-| AI 對戰 | ✅ | ✅ | ❌* |
-| AI 分析 | ✅ | ✅ | ❌* |
-| 覆盤分析 | ✅ | ❌** | ❌* |
-| 拍照識別 | ✅ | ✅ | ✅ |
+### Online Play
+Visit: https://android-xiangqi-offline.netlify.app/
 
-\* iOS 限制：WebAssembly 本地運算受限  
-** 手機 CPU 運算能力不足
+### Local Development
 
----
+```bash
+# Clone repository
+git clone https://github.com/dffge552/xiangqi-pwa-offline.git
 
-## 🐟 AI 引擎
+# Navigate to directory
+cd xiangqi-pwa-offline
 
-本專案採用 **[皮卡魚 (Pikafish)](https://pikafish.org/)** 作為 AI 核心：
+# Install dependencies (if applicable)
+npm install
 
-- 🔓 開源免費的象棋引擎
-- ⚡ 持續更新優化，棋力強勁
-- 🚀 支援多線程並行計算
-- 📖 廣泛應用於象棋教學
+# Start development server
+npm start
+```
 
-相關資源：
-- [皮卡魚在線分析平台](https://pikafish.org/)
-- [皮卡魚官網](https://pikafish.org/)
+**Requirements**: Modern browser (Chrome 90+, Firefox 88+, Safari 14+)
 
 ---
 
-## 📋 技術棧
+## Technical Stack
 
-- **前端框架**: 原生 HTML/CSS/JavaScript (Vanilla JS)
-- **AI 引擎**: Pikafish (WebAssembly)
-- **視覺識別**: ONNX Runtime (自訓練模型)
+- **Frontend**: Vanilla JavaScript (ES6+), HTML5, CSS3
+- **AI Engine**: Pikafish (WebAssembly)
+- **Computer Vision**: ONNX Runtime (custom-trained models)
 - **PWA**: Service Worker + Workbox
-- **儲存**: LocalStorage / IndexedDB
+- **Storage**: LocalStorage / IndexedDB
 
 ---
 
-## 📖 詳細文檔
+## AI Engine
 
-- [📸 拍照識別完整使用說明](./docs/photo-recognition.md)
-- [📚 開局殘局庫使用指南](./docs/opening-endgame.md)
-- [⚙️ 遊戲設定與功能說明](./docs/game-settings.md)
-- [🤖 AI 功能使用技巧](./docs/ai-features.md)
+Powered by **[Pikafish](https://pikafish.org/)**, an open-source Xiangqi engine:
+
+- 🔓 Free and open source
+- ⚡ Continuously updated with strong playing strength
+- 🚀 Multi-threaded parallel computation
+- 📖 Widely used in Xiangqi education
+
+**Resources:**
+- [Pikafish Analysis Platform](https://pikafish.org/)
+- [Official Website](https://pikafish.org/)
 
 ---
 
-## 🎯 開發緣起
+## Documentation
 
-> 大家好，我是一名目前就讀高二的學生。開發「棋弈江湖」源自於學校功課的要求，但更源於對象棋的熱愛。
+- [📸 Board Recognition Guide](./docs/photo-recognition.md)
+- [📚 Puzzle Library Manual](./docs/opening-endgame.md)
+- [⚙️ Settings & Features](./docs/game-settings.md)
+- [🤖 AI Features Tutorial](./docs/ai-features.md)
+
+---
+
+## Project Motivation
+
+> Hi, I'm a high school sophomore who developed Xiangqi Arena initially as a school project, but mainly driven by my passion for Chinese Chess.
 > 
-> 市面上的象棋軟體要不是功能過於複雜，就是缺少現代化介面。因此我結合程式設計專長，打造這個既專業又親切的平台。
+> Existing Xiangqi software often suffers from either overly complex interfaces or lack of modern features. I combined my programming skills to create a platform that's both professional and accessible.
 > 
-> 本專案核心目的是**提升棋士棋力**，透過 AI 分析、覆盤功能、多樣化對戰模式，讓每位使用者都能持續進步，期盼培養出更多優秀象棋人才，為台灣象棋界爭光！
+> The core mission is **improving players' skills** through AI analysis, game review, and diverse practice modes. I hope to nurture talented Xiangqi players and bring honor to Taiwan's Xiangqi community!
 
 ---
 
-## 🤝 貢獻指南
+## Contributing
 
-歡迎各種形式的貢獻！
+Contributions are welcome! 
 
-### 如何貢獻
-1. Fork 本專案
-2. 創建你的特性分支 (`git checkout -b feature/AmazingFeature`)
-3. 提交你的修改 (`git commit -m 'Add some AmazingFeature'`)
-4. 推送到分支 (`git push origin feature/AmazingFeature`)
-5. 開啟 Pull Request
+### How to Contribute
 
-### 特別歡迎
-- 🧠 **AI 模型改進** - 提升識別準確度
-- 🌍 **多語言支援** - 翻譯介面文字
-- 🎨 **UI/UX 優化** - 提升使用體驗
-- 📚 **題庫擴充** - 新增更多練習題
-- 🐛 **Bug 修復** - 回報與修復問題
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+### Especially Welcome
+
+- 🧠 **AI Model Improvements** - Enhance recognition accuracy
+- 🌍 **Internationalization** - Translate interface text
+- 🎨 **UI/UX Enhancements** - Improve user experience
+- 📚 **Puzzle Expansion** - Add more practice positions
+- 🐛 **Bug Fixes** - Report and fix issues
 
 ---
 
-## 📝 授權條款
+## License
 
-本專案採用 [MIT License](LICENSE) 授權。
+This project is licensed under the [MIT License](LICENSE).
 
-**這意味著你可以：**
-- ✅ 商業使用
-- ✅ 修改原始碼
-- ✅ 分發
-- ✅ 私人使用
-- ✅ **複製到其他地方使用**
+**You are free to:**
+- ✅ Use commercially
+- ✅ Modify
+- ✅ Distribute
+- ✅ Use privately
+- ✅ **Copy and integrate into other projects**
 
-**唯一要求：**
-- ⭐ **必須標註原作者名稱**
-- 📄 保留原始版權聲明
+**Only requirement:**
+- ⭐ **Attribution required**
+- 📄 Preserve copyright notice
 
-### 引用範例
+### Attribution Example
 ```
-本專案使用了「棋弈江湖」的棋盤識別系統
-原作者：dffge552
-來源：https://github.com/dffge552/xiangqi-pwa-offline
+This project uses the board recognition system from "Xiangqi Arena"
+Author: dffge552
+Source: https://github.com/dffge552/xiangqi-pwa-offline
 ```
 
 ---
 
-## 🙏 致謝
+## Acknowledgments
 
-### 題庫來源
-- [从寬象棋 YouTube 頻道](https://youtube.com/@从宽象棋) - 江湖殘局與疑難雜症
+### Puzzle Sources
+- [从寬象棋 YouTube Channel](https://youtube.com/@从宽象棋) - Endgame puzzles and complex positions
 
-### 推薦學習資源
-- [棋弈江湖官方頻道](填入你的頻道)
+### Recommended Learning Resources
 - [从寬象棋](https://youtube.com/@从宽象棋)
-- [象棋王子](填入連結)
-- [板牙象棋](填入連結)
-- 更多資源請見[遊戲內說明](#)
+- Additional resources available in-game
 
 ---
 
-## 📞 聯絡方式
+## Contact
 
-- 🐛 [問題回報表單](https://docs.google.com/forms/d/1GYzy-riAftOFiZNwsibmmnYMHih0T4ccjt1Ritm-g2k/edit?sharingaction=ownershiptransfer&ts=68a85dac)
-- 📧 Email: [xianqitw@gmail.com]
-- 🌐 線上體驗: https://android-xiangqi-offline.netlify.app/
+- 🐛 [Issue Report Form](https://docs.google.com/forms/d/1GYzy-riAftOFiZNwsibmmnYMHih0T4ccjt1Ritm-g2k/edit)
+- 📧 Email: xianqitw@gmail.com
+- 🌐 Live Demo: https://android-xiangqi-offline.netlify.app/
 
 ---
 
-## 🌟 Star History
+## Star History
 
-如果這個專案對你有幫助，請給個 ⭐ Star 支持！
+If this project helps you, please give it a ⭐ star!
 
 [![Star History Chart](https://api.star-history.com/svg?repos=dffge552/xiangqi-pwa-offline&type=Date)](https://star-history.com/#dffge552/xiangqi-pwa-offline&Date)
 
@@ -273,7 +269,7 @@ console.log(fenCode); // 輸出 FEN 格式棋盤
 
 <div align="center">
 
-**用心打造 · 開源分享 · 共同進步**
+**Crafted with Care · Shared Openly · Growing Together**
 
 Made with ❤️ by [dffge552](https://github.com/dffge552)
 
